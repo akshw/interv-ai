@@ -1,11 +1,15 @@
-import KodNestClone from "./components/Kodnest";
+import Kodnest from "./components/Kodnest";
+import Interview from "./components/Interview";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <>
-      <div className="font-bold underline">Hiii</div>;
-      <KodNestClone></KodNestClone>;
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Kodnest />}></Route>
+        <Route path="/interview" element={<Interview />}></Route>
+      </Routes>
+    </Router>
   );
 }
 

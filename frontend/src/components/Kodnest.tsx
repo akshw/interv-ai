@@ -1,334 +1,229 @@
-// Make sure './index.css' with Tailwind directives is imported, usually in src/index.js
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
-function KodNestClone() {
-  // Sample Data (remains the same)
-  const liveClassesData = [
-    {
-      id: 1,
-      title: "Java - 2025",
-      status: "Not Started",
-      mentor: "Ashish Kumar",
-      progress: 37,
-      time: "08:00 AM - 10:15 AM",
-      isLive: true,
-    },
-    {
-      id: 2,
-      title: "SQL - 2025",
-      status: "Not Started",
-      mentor: "Praveen Kumar",
-      progress: 60,
-      time: "11:15 AM - 1:00 PM",
-      isLive: true,
-    },
-    {
-      id: 3,
-      title: "TCS Preparation 2025",
-      status: "Upcoming",
-      mentor: "Ayaan M",
-      progress: 87,
-      time: "02:30 PM - 04:00 PM",
-      isLive: true,
-    },
-  ];
-
-  const selfPacedCoursesData = [
-    {
-      id: 4,
-      title: "Aptitude and Reasoning",
-      status: "Self-Paced",
-      mentor: "KodNest",
-      progress: 0,
-      courseType: "Self-Paced",
-      isLive: false,
-    },
-    {
-      id: 5,
-      title: "Learn How to Code",
-      status: "Self-Paced",
-      mentor: "KodNest",
-      progress: 0,
-      courseType: "Self-Paced",
-      isLive: false,
-    },
-  ];
-
-  // Helper logic can be kept inside the component if needed, or applied inline
-  const getBadgeClasses = (status: string) => {
-    switch (status.toLowerCase()) {
-      case "not started":
-        return "bg-orange-400 text-white";
-      case "upcoming":
-        return "bg-blue-400 text-white";
-      case "self-paced":
-        return "bg-indigo-500 text-white";
-      default:
-        return "bg-gray-400 text-white";
-    }
-  };
-
-  const getBorderClass = (status: string) => {
-    switch (status.toLowerCase()) {
-      case "not started":
-        return "border-orange-400";
-      case "upcoming":
-        return "border-blue-400";
-      case "self-paced":
-        return "border-indigo-500";
-      default:
-        return "border-gray-400";
-    }
-  };
-
+function KodNest() {
   return (
-    <div className="bg-gray-50 min-h-screen font-sans">
-      {/* --- Navbar --- */}
-      <nav className="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50">
-        {" "}
-        {/* Added sticky top */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            {/* Left Side */}
-            <div className="flex items-center">
-              <span className="font-bold text-xl text-gray-800 mr-6">
-                KodNest
-              </span>
-              <div className="hidden md:flex space-x-6">
-                <a
-                  href="#home"
-                  className="text-purple-600 font-medium border-b-2 border-purple-600 px-1 py-5"
-                >
-                  Home
-                </a>{" "}
-                {/* Adjusted padding for underline alignment */}
-                <a
-                  href="#courses"
-                  className="text-gray-600 hover:text-gray-800 font-medium py-5"
-                >
-                  Courses
-                </a>
-                <a
-                  href="#practice"
-                  className="text-gray-600 hover:text-gray-800 font-medium py-5"
-                >
-                  Practice
-                </a>
-                <a
-                  href="#contest"
-                  className="text-gray-600 hover:text-gray-800 font-medium py-5"
-                >
-                  Contest
-                </a>
-              </div>
-            </div>
-            {/* Right Side */}
-            <div className="flex items-center space-x-4">
-              <button className="bg-purple-100 text-purple-700 hover:bg-purple-200 font-medium py-2 px-4 rounded-md text-sm">
-                Help and Earn
-              </button>
-              <a
-                href="#mentor"
-                className="text-gray-600 hover:text-gray-800 font-medium text-sm"
-              >
-                Mentor Connect
-              </a>
-              <div className="w-8 h-8 bg-gray-300 rounded-full"></div>{" "}
-              {/* Avatar Placeholder */}
-            </div>
+    <div className="min-h-screen bg-white">
+      {/* Navigation */}
+      <nav className="flex items-center justify-between px-8 py-4 border-b">
+        <div className="flex items-center gap-12">
+          <h1 className="text-2xl font-bold text-black">KodNest</h1>
+          <div className="flex gap-8">
+            <a
+              href="#"
+              className="text-black font-medium border-b-2 border-yellow-400"
+            >
+              Home
+            </a>
+            <a href="#" className="text-gray-600 hover:text-black">
+              Courses
+            </a>
+            <a href="#" className="text-gray-600 hover:text-black">
+              Practice
+            </a>
+            <a href="#" className="text-gray-600 hover:text-black">
+              Contest
+            </a>
+            <Link to="/interview" className="text-gray-600 hover:text-black">
+              F to F Interview
+            </Link>
+          </div>
+        </div>
+        <div className="flex items-center gap-4">
+          <button className="px-4 py-2 rounded-full bg-purple-500 text-white hover:bg-purple-400 transition-colors">
+            Help and Earn
+          </button>
+          <button className="flex items-center gap-2 px-4 py-2 text-gray-700 hover:text-gray-900">
+            <span>Mentor Connect</span>
+          </button>
+          <div className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center">
+            <span className="text-sm text-gray-600">U</span>
           </div>
         </div>
       </nav>
 
-      {/* --- Main Content Area --- */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        {/* --- Hero Section --- */}
-        <section className="bg-gradient-to-r from-blue-50 to-indigo-100 p-6 md:p-10 rounded-lg my-8 flex flex-col md:flex-row items-center justify-between shadow-sm border border-gray-200">
-          <div className="md:w-2/3 mb-6 md:mb-0 md:pr-8">
-            <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 mb-3">
-              BoKod: Your Learning Ally at KodNest
-            </h2>
-            <p className="text-gray-600 leading-relaxed mb-5">
+      {/* Hero Section */}
+      <div className="container mx-auto px-8 py-12">
+        <div className="flex justify-between items-center">
+          <div className="max-w-xl">
+            <h1 className="text-3xl font-bold mb-4">
+              BroKod: Your Learning Ally at KodNest
+            </h1>
+            <p className="text-gray-600 mb-6 text-lg leading-relaxed">
               Unlock your potential with BroKod - your mentor, friend, coach,
               guide, and companion. Available 24/7 to support your journey, from
-              learning to career success.
+              learning to career success
             </p>
-            <button className="bg-green-500 hover:bg-green-600 text-white font-medium py-2 px-6 rounded-md shadow-md transition duration-200 ease-in-out">
+            <button className="px-6 py-3 bg-yellow-400 rounded-md font-medium hover:bg-yellow-500 transition-colors">
               Chat with BroKod
             </button>
           </div>
-          <div className="md:w-1/3 flex justify-center md:justify-end">
-            <div className="w-40 h-40 bg-gradient-to-br from-yellow-200 to-orange-300 rounded-full flex items-center justify-center text-gray-600 text-sm italic">
-              Illustration Placeholder
-            </div>
-            {/* Example: <img src="/path/to/illustration.svg" alt="BroKod Illustration" className="w-40 h-auto" /> */}
+          <div className="w-96 h-72 bg-purple-50 rounded-lg flex items-center justify-center">
+            <span className="text-2xl font-bold text-black">
+              BroKod AI Assistant
+            </span>
           </div>
-        </section>
+        </div>
 
-        {/* --- Live Classes Section --- */}
-        <section className="mb-10">
-          <div className="flex justify-between items-center mb-5">
-            <h2 className="text-xl font-semibold text-gray-800">
+        {/* Live Classes Section */}
+        <div className="mt-16">
+          <div className="flex items-center justify-between mb-8">
+            <h2 className="text-xl font-semibold flex items-center gap-2">
               Live Classes
+              <span className="w-5 h-5 rounded-full bg-gray-100 flex items-center justify-center text-xs text-gray-600">
+                ?
+              </span>
             </h2>
-            <div className="flex space-x-2">
-              <button
-                aria-label="Previous Class"
-                className="border border-gray-300 rounded-full w-8 h-8 flex items-center justify-center text-gray-500 hover:bg-gray-100 transition"
-              >
-                &lt;
+            <div className="flex gap-2">
+              <button className="p-2 rounded-full hover:bg-gray-100 transition-colors">
+                <ChevronLeft className="w-5 h-5" />
               </button>
-              <button
-                aria-label="Next Class"
-                className="border border-gray-300 rounded-full w-8 h-8 flex items-center justify-center text-gray-500 hover:bg-gray-100 transition"
-              >
-                &gt;
+              <button className="p-2 rounded-full hover:bg-gray-100 transition-colors">
+                <ChevronRight className="w-5 h-5" />
               </button>
             </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {liveClassesData.map((course) => (
-              // --- Course Card JSX (Inline) ---
+
+          <div className="grid grid-cols-3 gap-6">
+            {[
+              {
+                title: "Java - 2025",
+                mentor: "Punith Kumar",
+                progress: "97.03",
+                time: "09:00 AM - 10:15 AM",
+                status: "Not Started",
+                letter: "J",
+                color: "bg-blue-500",
+              },
+              {
+                title: "SQL - 2025",
+                mentor: "Punith Kumar",
+                progress: "89.17",
+                time: "10:15 AM - 11:00 AM",
+                status: "Not Started",
+                letter: "S",
+                color: "bg-purple-500",
+              },
+              {
+                title: "TCS Preparation 2025",
+                mentor: "Ayush B",
+                progress: "97.3",
+                time: "02:30 PM - 04:00 PM",
+                status: "Upcoming",
+                letter: "T",
+                color: "bg-indigo-500",
+              },
+            ].map((classItem, index) => (
               <div
-                key={course.id}
-                className={`bg-white border border-gray-200 rounded-lg shadow-md p-5 flex flex-col transition-shadow hover:shadow-lg border-l-4 ${getBorderClass(
-                  course.status
-                )}`}
+                key={index}
+                className="border rounded-lg p-6 hover:shadow-md transition-shadow"
               >
-                <div className="flex justify-between items-start mb-2">
-                  <h3 className="text-md font-semibold text-gray-800 mr-2">
-                    {course.title}
-                  </h3>
-                  <span
-                    className={`text-xs font-bold px-2.5 py-1 rounded ${getBadgeClasses(
-                      course.status
-                    )} whitespace-nowrap`}
-                  >
-                    {course.status}
-                  </span>
+                <div className="flex gap-4 mb-4">
+                  <div className="w-10 h-10 rounded-full bg-gray-900 text-white flex items-center justify-center font-medium">
+                    {classItem.letter}
+                  </div>
+                  <div>
+                    <h3 className="font-medium">{classItem.title}</h3>
+                    <p className="text-sm text-gray-600">
+                      Mentor: {classItem.mentor}
+                    </p>
+                  </div>
                 </div>
-                <p className="text-sm text-gray-500 mb-4">
-                  Mentor: {course.mentor}
-                </p>
-                <div className="flex items-center justify-between text-sm text-gray-600 mb-3">
-                  <span>Progress</span>
-                  <div className="flex-grow bg-gray-200 rounded-full h-1.5 mx-3">
+                <div className="mb-4">
+                  <div className="flex justify-between text-sm mb-1">
+                    <span>Progress</span>
+                    <span>{classItem.progress}%</span>
+                  </div>
+                  <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
                     <div
-                      className="bg-green-500 h-1.5 rounded-full"
-                      style={{ width: `${course.progress}%` }}
+                      className="h-full rounded-full bg-black"
+                      style={{ width: `${classItem.progress}%` }}
                     ></div>
                   </div>
-                  <span>{course.progress}%</span>
                 </div>
-                <div className="text-sm text-gray-600 mb-4">
-                  <p>Class Time: {course.time}</p>
+                <div className="mb-4">
+                  <p className="text-sm text-gray-600">Class Time</p>
+                  <p className="text-sm font-medium">{classItem.time}</p>
                 </div>
-                <div className="mt-auto pt-4 border-t border-gray-100 flex justify-between items-center text-sm">
-                  <a
-                    href="#help"
-                    className="text-gray-600 hover:text-blue-600 flex items-center"
-                  >
+                <div className="flex items-center justify-between">
+                  <button className="text-sm text-gray-600 hover:text-gray-900 flex items-center gap-1">
+                    <span className="w-4 h-4 rounded-full border flex items-center justify-center text-xs">
+                      ?
+                    </span>
                     Help Desk
-                  </a>
-                  <a
-                    href="#join"
-                    className="text-blue-600 hover:text-blue-800 font-medium flex items-center"
-                  >
+                  </button>
+                  <button className="text-sm text-blue-600 hover:text-blue-700">
                     Join Class
-                  </a>
+                  </button>
                 </div>
               </div>
-              // --- End Course Card JSX ---
             ))}
           </div>
-        </section>
+        </div>
 
-        {/* --- Self-Paced Courses Section --- */}
-        <section className="mb-10">
-          <div className="flex justify-between items-center mb-5">
-            <h2 className="text-xl font-semibold text-gray-800">
-              Self-Paced Courses
-            </h2>
-            {/* Optional: Hide arrows if not needed/scrollable */}
-            {/* <div className="flex space-x-2">...</div> */}
+        {/* Self-Paced Courses */}
+        <div className="mt-16">
+          <div className="flex items-center gap-2 mb-8">
+            <h2 className="text-xl font-semibold">Self-Paced Courses</h2>
+            <span className="w-5 h-5 rounded-full bg-gray-100 flex items-center justify-center text-xs text-gray-600">
+              ?
+            </span>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {selfPacedCoursesData.map((course) => (
-              // --- Course Card JSX (Inline) ---
+
+          <div className="grid grid-cols-2 gap-6">
+            {[
+              {
+                title: "Aptitude and Reasoning",
+                mentor: "KodNest",
+                letter: "A",
+              },
+              {
+                title: "Learn How to Code",
+                mentor: "KodNest",
+                letter: "L",
+              },
+            ].map((course, index) => (
               <div
-                key={course.id}
-                className={`bg-white border border-gray-200 rounded-lg shadow-md p-5 flex flex-col transition-shadow hover:shadow-lg border-l-4 ${getBorderClass(
-                  course.status
-                )}`}
+                key={index}
+                className="border rounded-lg p-6 hover:shadow-md transition-shadow"
               >
-                <div className="flex justify-between items-start mb-2">
-                  <h3 className="text-md font-semibold text-gray-800 mr-2">
-                    {course.title}
-                  </h3>
-                  <span
-                    className={`text-xs font-bold px-2.5 py-1 rounded ${getBadgeClasses(
-                      course.status
-                    )} whitespace-nowrap`}
-                  >
-                    {course.status}
-                  </span>
-                </div>
-                <p className="text-sm text-gray-500 mb-4">
-                  Mentor: {course.mentor}
-                </p>
-                <div className="flex items-center justify-between text-sm text-gray-600 mb-3">
-                  <span>Progress</span>
-                  <div className="flex-grow bg-gray-200 rounded-full h-1.5 mx-3">
-                    <div
-                      className="bg-green-500 h-1.5 rounded-full"
-                      style={{ width: `${course.progress}%` }}
-                    ></div>
+                <div className="flex gap-4 mb-4">
+                  <div className="w-10 h-10 rounded-full bg-gray-900 text-white flex items-center justify-center font-medium">
+                    {course.letter}
                   </div>
-                  <span>{course.progress}%</span>
+                  <div>
+                    <h3 className="font-medium">{course.title}</h3>
+                    <p className="text-sm text-gray-600">
+                      Mentor: {course.mentor}
+                    </p>
+                  </div>
                 </div>
-                <div className="text-sm text-gray-600 mb-4">
-                  <p>Course Type: {course.courseType}</p>
+                <div className="mb-4">
+                  <div className="flex justify-between text-sm mb-1">
+                    <span>Progress</span>
+                    <span>0%</span>
+                  </div>
+                  <div className="h-2 bg-gray-100 rounded-full"></div>
                 </div>
-                <div className="mt-auto pt-4 border-t border-gray-100 flex justify-between items-center text-sm">
-                  <a
-                    href="#syllabus"
-                    className="text-gray-600 hover:text-blue-600 flex items-center"
-                  >
+                <div className="mb-4">
+                  <p className="text-sm text-gray-600">Course Type</p>
+                  <p className="text-sm font-medium">Self-Paced</p>
+                </div>
+                <div className="flex items-center justify-between">
+                  <button className="text-sm text-gray-600 hover:text-gray-900">
                     View Syllabus
-                  </a>
-                  <a
-                    href="#continue"
-                    className="text-blue-600 hover:text-blue-800 font-medium flex items-center"
-                  >
+                  </button>
+                  <button className="text-sm text-blue-600 hover:text-blue-700">
                     Continue
-                  </a>
+                  </button>
                 </div>
               </div>
-              // --- End Course Card JSX ---
             ))}
           </div>
-        </section>
-      </main>
-
-      {/* --- Floating Elements --- */}
-      <div className="fixed bottom-5 left-5 z-50">
-        <button
-          aria-label="Help"
-          className="bg-yellow-400 hover:bg-yellow-500 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg text-2xl font-bold"
-        >
-          ?
-        </button>
-      </div>
-      <div className="fixed right-[-28px] top-1/2 transform -translate-y-1/2 -rotate-90 origin-top-right z-40">
-        {" "}
-        {/* Adjusted position */}
-        <button className="bg-yellow-300 hover:bg-yellow-400 text-gray-700 font-medium py-2 px-4 rounded-t-md shadow-md text-sm whitespace-nowrap">
-          {" "}
-          {/* Added whitespace-nowrap */}
-          BroKod
-        </button>
+        </div>
       </div>
     </div>
   );
 }
 
-export default KodNestClone;
+export default KodNest;
